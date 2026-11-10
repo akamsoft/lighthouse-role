@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    lighthouse_nginx_port: 8080
+  tasks:
+    - name: Apply lighthouse role
+      ansible.builtin.include_role:
+        name: lighthouse-role

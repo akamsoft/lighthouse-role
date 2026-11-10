@@ -3,5 +3,15 @@ lighthouse_version: "master"
 lighthouse_archive_url: "https://github.com/VKCOM/lighthouse/archive/refs/heads/{{ lighthouse_version }}.tar.gz"
 lighthouse_dest: "/usr/share/nginx/lighthouse"
 lighthouse_nginx_port: 80
+
+# Пользователь/группа Nginx зависят от семейства ОС:
+#  - RedHat: nginx / nginx
+#  - Debian/Ubuntu: www-data / www-data
+lighthouse_nginx_user: "{{ 'www-data' if ansible_os_family == 'Debian' else 'nginx' }}"
+lighthouse_nginx_group: "{{ 'www-data' if ansible_os_family == 'Debian' else 'nginx' }}"
+
+# Адрес ClickHouse, к которому LightHouse будет проксировать запросы.
+# По умолчанию — localhost (если ClickHouse на том же хосте).
+# В плейбуке (ДЗ №4) или в integration-сценарии переопределяется на реальный IP.
 clickhouse_host: "127.0.0.1"
 clickhouse_port: 8123

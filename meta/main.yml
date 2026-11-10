@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  role_name: lighthouse_role
+  namespace: akamsoft
   author: Alex
   description: Install and configure LightHouse (VKCOM) with Nginx
   company: akamsoft
@@ -9,8 +11,10 @@ galaxy_info:
     - name: EL
       versions:
         - "9"
+    - name: Ubuntu
+      versions:
+        - all
   galaxy_tags:
     - lighthouse
     - nginx
-    - clickhouse
 dependencies: []
